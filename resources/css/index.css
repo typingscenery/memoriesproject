@@ -1,5 +1,14 @@
 /* Universal Styles */
 
+/* Custom Variables */
+
+:root {
+  --border-radius: 10px;
+}
+
+/* End Custom Variables */
+
+
 * {
     font-family: 'Times New Roman', Times, Georgia, serif, Arial, sans-serif;
     box-sizing: border-box;
@@ -26,6 +35,8 @@ h3 {
 /* Body (Mobile Default) */
 
 body {
+  width: 90%;
+  margin: 0 auto;
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-areas:
@@ -55,49 +66,13 @@ main {
 }
 
 
-/* Media Query for non-mobile viewers */
-
-@media (min-width: 50em) {
-  body {
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas:
-      "header"
-      "nav"
-      "main";
-    gap: 6px;
-    background-color: sienna;
-    min-height: 100vh;
-  }
-  
-  main {
-    grid-template-columns: 19em 1fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      'about content'
-      'about back'
-      'about footer'
-      ;
-  }
-  
-  .about {
-    grid-row: span 3;
-  }
-
-  .footer {
-    grid-column: span 2;
-  }
-
-}
-
-
 /* Header */
 
-.header {
+header {
     grid-area: header;
     height: 108px;
     position: relative;
     top: 0;
-    z-index: 1;
     background-color: burlywood;  
     color: sienna;
     padding: 30px;
@@ -105,10 +80,11 @@ main {
     text-align: left;
     width: 100%;
     border-top: 9px solid rgb(249, 219, 179);
-    border-bottom: 5px dotted rgb(249, 219, 179); 
+    border-bottom: 5px dotted rgb(249, 219, 179);
+    border-radius: var(--border-radius) 
 }
 
-.header h1 {
+header h1 {
     font-size: 41px;
     font-style: italic;
     margin: 0;
@@ -117,12 +93,11 @@ main {
 
 /* Navigation section */
 
-.nav {
+nav {
   grid-area: nav;
   height: fit-content;
   position: relative;
   top: 0;
-  z-index: 1;
   background-color: burlywood; 
   padding: 15px;
   margin: 0;
@@ -132,9 +107,10 @@ main {
   color: sienna;
   font-weight: bold;
   border: 9px solid rgb(249, 219, 179);
+  border-radius: var(--border-radius);
 }
 
-.nav h2 {
+nav h2 {
   margin: 0 0 10px;
   padding: 3px;
 }
@@ -153,7 +129,7 @@ nav ul li a {
   padding: 6px 16px;
   line-height: 40px;
   border: rgb(251, 230, 202) 2px solid;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 }
 
 nav a:hover {
@@ -174,6 +150,7 @@ nav a:hover {
   color: sienna;
   font-weight: bold;
   border: 9px solid rgb(249, 219, 179);
+  border-radius: var(--border-radius);
 }
 
 .about h2 {
@@ -201,6 +178,7 @@ nav a:hover {
   background-color: rgb(249, 219, 179);
   overflow: auto;
   height: 100%;
+  border-radius: var(--border-radius);
 }
 
 .content h2 {
@@ -213,25 +191,24 @@ nav a:hover {
 }
 
 .content img {
-  max-width: 100%;
+  max-width: 260px;
   max-height: 350px;
 }
 
-section {
+#first, #second, #third, #fourth {
   display: flex;
   align-items: center;
   flex: 1 250px;
   margin: 10px;
   border: 1px solid rgb(244, 188, 136);
   background-color: rgb(244, 188, 136);
-}
-
-section:nth-of-type(3) {
-  flex: 3 350px;
+  text-align: center;
+  border-radius: var(--border-radius);
 }
 
 article {
   margin: 5px;
+  width: 100%;
 }
 
 
@@ -244,9 +221,9 @@ article {
   margin: 0;
   width: 100%;
   background-color: rgb(249, 219, 179);
-  padding: 5px;
+  padding: 8px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 }
 
 .back:hover {
@@ -258,18 +235,53 @@ article {
 
 /* Footer */
 
-.footer {
+footer {
   grid-area: footer;
   margin: 0;
   width: 100%;
   background-color: burlywood;
   border: 10px solid rgb(249, 219, 179);
   z-index: 1;
+  border-radius: var(--border-radius);
 }
 
-.footer h3 {
+footer h3 {
   font-style: italic;
   margin: 30px auto;
   text-align: center;
 }
 
+
+/* Media Query for non-mobile viewers */
+
+@media (min-width: 50em) {
+  body {
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main";
+    gap: 6px;
+    background-color: sienna;
+    min-height: 100vh;
+  }
+  
+  main {
+    grid-template-columns: 19em 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      'about content'
+      'about back'
+      'about footer'
+      ;
+  }
+  
+  .about {
+    grid-row: span 2;
+  }
+
+  footer {
+    grid-column: span 2;
+  }
+
+}
